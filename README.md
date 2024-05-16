@@ -30,9 +30,17 @@ SELECT * FROM `students` INNER JOIN `degrees` ON `students`.`degree_id` = `degre
 Neuroscienze
 SELECT * FROM `degrees` INNER JOIN `departments` ON `degrees`.`department_id` = `departments`.`id` WHERE `departments`.`name` = 'Dipartimento di Neuroscienze' AND `degrees`.`level`= 'magistrale';
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
+SELECT * FROM `courses` INNER JOIN `course_teacher` ON `courses`.`id` = `course_teacher`.`course_id` INNER JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id` WHERE `teachers`.`name` = 'Fulvio' AND `teachers`.`surname` = 'Amato';
 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui
 sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e
 nome
+SELECT * 
+FROM `students`
+INNER JOIN `degrees`
+ON `students`.`degree_id` = `degrees`.`id`
+INNER JOIN `departments`
+ON `degrees`.`department_id` = `departments`.`id`
+ORDER BY `students`.`surname` AND `students`.`name`;
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di
 Matematica (54)
